@@ -7,6 +7,16 @@ import (
 	"strconv"
 )
 
+func sum(integers []int64) int64 {
+	result := int64(0)
+
+	for _, integer := range integers {
+		result += integer
+	}
+
+	return result
+}
+
 func echo(format string, values ...interface{}) {
 	fmt.Printf(format+"\n", values...)
 }

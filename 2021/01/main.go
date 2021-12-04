@@ -1,18 +1,21 @@
 package main
 
 func main() {
-	current := int64(-1)
-	increases := -1
+	window := make([]int64, 0)
+	increases := 0
 
 	for integer := range stdinInts() {
-		if integer > current {
-			echo("%v >  %v", integer, current)
-			increases++
-		} else {
-			echo("%v <= %v", integer, current)
+		previous := window
+
+		window = append(window, integer)
+
+		if len(window) > 3 {
+			window = window[1:]
 		}
 
-		current = integer
+		if len(previous) == 3 && sum(window) > sum(previous) {
+			increases++
+		}
 	}
 
 	echo("%v increases", increases)
