@@ -32,6 +32,30 @@ func dayTwo() {
 	echo("Horizontal %v, depth %v, product %v", horizontal, depth, horizontal*depth)
 }
 
+func dayTwoWithAim() {
+	horizontal := int64(0)
+	depth := int64(0)
+	aim := int64(0)
+
+	for movement := range stdinMovements() {
+		echo("Movement %v", movement)
+
+		switch movement.direction {
+		case "forward":
+			horizontal += movement.units
+			depth += aim * movement.units
+		case "down":
+			aim += movement.units
+		case "up":
+			aim -= movement.units
+		default:
+			echo("Unrecognized direction %v", movement.direction)
+		}
+	}
+
+	echo("Horizontal %v, depth %v, product %v", horizontal, depth, horizontal*depth)
+}
+
 func stdinMovements() chan movement {
 	movements := make(chan movement)
 

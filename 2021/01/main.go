@@ -10,6 +10,8 @@ func main() {
 		dayOne(3)
 	case "2.1":
 		dayTwo()
+	case "2.2":
+		dayTwoWithAim()
 	case "":
 		echo("Must set DAY environment variable")
 	default:
